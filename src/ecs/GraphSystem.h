@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <queue>
+#include <unordered_map>
 #include "EcsSystem.h"
 #include "../graph/PacketRecycler.h"
 
@@ -16,7 +17,7 @@ public:
     void onPacket(graph::Packet& pkt) override { enqueue(&pkt); }
 
 private:
-    std::vector<EcsSystem*> m_systems;
+    std::unordered_map<hash_t, EcsSystem*> m_systems;
     std::queue<graph::Packet*> m_packets;
 };
 
