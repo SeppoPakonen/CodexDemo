@@ -5,7 +5,7 @@ namespace ecs {
 
 class SDL3_Input_System : public EcsSystem {
 public:
-    std::string name() const override { return "SDL3_Input"; }
+    SDL3_Input_System() : EcsSystem("SDL3_Input") {}
     void update() override {}
     void onPacket(graph::Packet& pkt) override { (void)pkt; }
 };
