@@ -6,7 +6,7 @@ namespace ecs {
 
 class DummyAudioIn : public EcsSystem {
 public:
-    std::string name() const override { return "DummyAudioIn"; }
+    DummyAudioIn() : EcsSystem("DummyAudioIn") {}
     void update() override {}
     void onPacket(graph::Packet& pkt) override {
         auto& a = pkt.data.audio;

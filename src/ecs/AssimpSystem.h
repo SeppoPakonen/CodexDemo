@@ -5,7 +5,7 @@ namespace ecs {
 
 class AssimpSystem : public EcsSystem {
 public:
-    std::string name() const override { return "Assimp"; }
+    AssimpSystem() : EcsSystem("Assimp") {}
     void update() override {}
     void onPacket(graph::Packet& pkt) override { (void)pkt; }
 };

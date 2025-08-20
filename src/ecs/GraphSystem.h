@@ -9,10 +9,9 @@ namespace ecs {
 
 class GraphSystem : public EcsSystem {
 public:
+    GraphSystem() : EcsSystem("GraphSystem") {}
     void addSystem(EcsSystem* sys);
     void enqueue(graph::Packet* pkt);
-
-    std::string name() const override { return "GraphSystem"; }
     void update() override;
     void onPacket(graph::Packet& pkt) override { enqueue(&pkt); }
 

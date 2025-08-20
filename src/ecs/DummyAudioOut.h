@@ -6,8 +6,8 @@ namespace ecs {
 
 class DummyAudioOut : public EcsSystem {
 public:
-    explicit DummyAudioOut(GraphSystem& g) : m_graph(g) {}
-    std::string name() const override { return "DummyAudioOut"; }
+    explicit DummyAudioOut(GraphSystem& g)
+        : EcsSystem("DummyAudioOut"), m_graph(g) {}
     void setTarget(hash_t addr) { m_target = addr; }
     void update() override;
     void onPacket(graph::Packet&) override {}
