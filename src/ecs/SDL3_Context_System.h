@@ -5,7 +5,7 @@ namespace ecs {
 
 class SDL3_Context_System : public EcsSystem {
 public:
-    std::string name() const override { return "SDL3_Context"; }
+    SDL3_Context_System() : EcsSystem("SDL3_Context") {}
     void update() override {}
     void onPacket(graph::Packet& pkt) override { (void)pkt; }
 };
