@@ -31,12 +31,16 @@ Packet* PacketRecycler::acquire() {
     m_free = m_free->next;
     p->next = nullptr;
     p->format = PacketFormat::Unknown;
+    p->address = 0;
+    p->ptr = nullptr;
     return p;
 }
 
 void PacketRecycler::recycle(Packet* pkt) {
     if (!pkt) return;
     pkt->next = m_free;
+    pkt->address = 0;
+    pkt->ptr = nullptr;
     m_free = pkt;
 }
 
