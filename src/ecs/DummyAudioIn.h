@@ -1,6 +1,7 @@
 #pragma once
 #include "EcsSystem.h"
-#include <iostream>
+#include "../core/Log.h"
+#include "../graph/PacketDebug.h"
 
 namespace ecs {
 
@@ -9,10 +10,7 @@ public:
     DummyAudioIn() : EcsSystem("DummyAudioIn") {}
     void update() override {}
     void onPacket(graph::Packet& pkt) override {
-        auto& a = pkt.data.audio;
-        std::cout << "DummyAudioIn packet seq " << a.seq
-                  << " samples: " << a.samples[0] << ", " << a.samples[1]
-                  << ", " << a.samples[2] << ", " << a.samples[3] << std::endl;
+        core::Log::write(graph::toDebugString(pkt));
         pkt.address = 0; // delivered
     }
 };

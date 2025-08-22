@@ -1,5 +1,7 @@
 #include "DummyAudioOut.h"
 #include "../graph/PacketRecycler.h"
+#include "../graph/PacketDebug.h"
+#include "../core/Log.h"
 #include <cstring>
 
 namespace ecs {
@@ -17,6 +19,7 @@ void DummyAudioOut::update() {
     for (size_t i = 0; i < graph::AUDIO_SAMPLES_PER_PACKET; ++i) {
         a.samples[i] = static_cast<float>(i % 4);
     }
+    core::Log::write(graph::toDebugString(*pkt));
     m_graph.enqueue(pkt);
 }
 
